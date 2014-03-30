@@ -1,0 +1,68 @@
+{# src/General/SymProjectBundle/Resources/views/Default/index.html.twig #}
+{% extends 'GeneralSymProjectBundle::layout.html.twig' %}
+
+{% block search %}
+    <form action="" method="GET">
+        <label><input type="search" name="q" value={{ query }}></label>
+        <input type="submit" value="Search">
+    </form>
+    <br>
+
+    {% if results %}
+        <hr>
+        <div class="well">
+            {#<ul>#}
+                {% for result in results %}
+                    {#<li><strong>Title: </strong> {{ result.title }}</li>#}
+                    {#<li><strong>Author: </strong> {{ result.author }}</li>#}
+                    {#<li><strong>Created at: </strong> {{ result.created|date('l, F j, Y') }}</li>#}
+                    <h4><strong>Search results</strong></h4>
+                    <strong>Title: </strong><small> {{ result.title }} </small><br>
+                    <strong>Author: </strong><small> {{ result.author }} </small><br>
+                    <strong>Created at: </strong><small> {{ result.created|date('l, F j, Y') }}</small>
+
+
+                {% endfor %}
+            {#</ul>#}
+        </div>
+        <hr>
+    {% endif %}
+{% endblock %}
+
+{% block body %}
+    {% for blog in blogPage %}
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-8 blog-main">
+                    <div class="blog-post">
+
+                        <h2 class="blog-post-title">{{ blog.title }}</h2>
+                            <p class="blog-post-meta"><time datetime="{{ blog.created|date('c') }}">{{ blog.created|date('l, F j, Y') }}</time> by <a href="#">{{ blog.author }}</a></p>
+
+                        {#{% for comment in comments %}#}
+                        <div class="comment">
+                            <p><small>Comments: {{ comments[loop.index0]|length }}</small></p>
+                            {#<p><small>Comments: {{ blog.comments|length }}</small></p>#}
+                        </div>
+                        {#{% endfor %}#}
+                            <p>{{ blog.blog|truncate(350, true) }}</p><br>
+
+                        <div class="tags">
+                            <p><strong>Tags: </strong><span class="highlight">{{ blog.tags }}</span></p>
+                        </div>
+                            <p class="continue"><a href="{{ path('general_sym_project_show', { 'id': blog.id, 'slug': blog.slug }) }}">More reading&raquo </a></p>
+                        <hr>
+
+                    </div><!-- /.blog-post -->
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}
+
+
+
+{% block sidebar %}
+    {{ parent() }}
+
+{% endblock %}

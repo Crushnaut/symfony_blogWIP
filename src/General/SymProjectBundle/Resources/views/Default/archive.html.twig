@@ -1,0 +1,19 @@
+{# src/General/SymProjectBundle/Resources/views/Default/index.html.twig #}
+{#{% extends 'GeneralSymProjectBundle::layout.html.twig' %}#}
+
+
+<ul>
+    {% for year in blogPosts %}
+    <li>{{ year }}</li>
+        <ul>
+            {% for month in year %}
+                <li>{{ month }} (Num posts: {{ month }})</li>
+                    <ul>
+                        {% for post in month %}
+                            <li><a href="{{ path('general_sym_project_archive', {'year': post.created|date('Y'), 'month': post.created|date('F'), 'slug': post.slug}) }}">{{ post.title }}</a></li>
+                        {% endfor %}
+                    </ul>
+            {% endfor %}
+        </ul>
+    {% endfor %}
+</ul>
