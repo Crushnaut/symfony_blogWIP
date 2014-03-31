@@ -23,7 +23,7 @@ general_sym_project_comment_create:
         blog_id:  \d+
 
 general_sym_project_archive:
-     path:  /archive/
+     path:  /archive/{year}/{month}
      defaults: { _controller: GeneralSymProjectBundle:Blog:archive }
 
 general_sym_project_search:

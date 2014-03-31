@@ -26,6 +26,17 @@ class BlogRepository extends EntityRepository
                 ->getResult();
     }
 
+    public function getPostsByMonth($year, $month)
+    {
+        $qb = $this->createQueryBuilder('b')
+        ->from('Blog', 'b')
+            ->select('b')
+        ->where('created BETWEEN :june AND :july')
+            ->setParameter('june', $june->format('2013-June'))
+            ->setParameter('june', $july->format('2013-July'));
+
+    }
+
     public function getTags()
     {
         $blogTags = $this->createQueryBuilder('b')
@@ -70,27 +81,6 @@ class BlogRepository extends EntityRepository
         return $tagWeights;
     }
 
-    public function search(Request $request)
-    {
-        $results = null;
-        $query = $request->query->get('q');
 
-        if (!empty($query)) {
-            $em = $this->getDoctrine()->getManager();
-
-            $results = $em->createQueryBuilder()
-                ->from('GeneralMoviedbBundle:Movie', 'm')
-                ->select('m')
-                ->where('m.title LIKE :search')
-                ->setParameter(':search', "%${query}%")
-                ->getQuery()
-                ->getResult();
-        }
-
-//        return $this->render('GeneralMoviedbBundle:Default:list.html.twig', array(
-//        'query' => $query,
-//        'results' => $results,
-//        ));
-    }
 
 }

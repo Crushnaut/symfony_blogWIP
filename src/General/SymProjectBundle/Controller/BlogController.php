@@ -116,12 +116,9 @@ class BlogController extends Controller
         return $total;
     }
 
-    public function archiveAction()
+    public function archiveAction($year, $month)
     {
         $em = $this->getDoctrine()->getManager();
-
-//        $query = $em->getRepository('GeneralSymProjectBundle:Blog')
-//            ->findAll();
 
         $blogs = $em->getRepository('GeneralSymProjectBundle:Blog')
             ->getLatestBlogs();

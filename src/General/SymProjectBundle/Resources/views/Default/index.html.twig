@@ -2,31 +2,11 @@
 {% extends 'GeneralSymProjectBundle::layout.html.twig' %}
 
 {% block search %}
-    <form action="" method="GET">
+    <form action="{{ path('general_sym_project_search') }}" method="GET">
         <label><input type="search" name="q" value={{ query }}></label>
         <input type="submit" value="Search">
     </form>
     <br>
-
-    {% if results %}
-        <hr>
-        <div class="well">
-            {#<ul>#}
-                {% for result in results %}
-                    {#<li><strong>Title: </strong> {{ result.title }}</li>#}
-                    {#<li><strong>Author: </strong> {{ result.author }}</li>#}
-                    {#<li><strong>Created at: </strong> {{ result.created|date('l, F j, Y') }}</li>#}
-                    <h4><strong>Search results</strong></h4>
-                    <strong>Title: </strong><small> {{ result.title }} </small><br>
-                    <strong>Author: </strong><small> {{ result.author }} </small><br>
-                    <strong>Created at: </strong><small> {{ result.created|date('l, F j, Y') }}</small>
-
-
-                {% endfor %}
-            {#</ul>#}
-        </div>
-        <hr>
-    {% endif %}
 {% endblock %}
 
 {% block body %}
@@ -39,12 +19,9 @@
                         <h2 class="blog-post-title">{{ blog.title }}</h2>
                             <p class="blog-post-meta"><time datetime="{{ blog.created|date('c') }}">{{ blog.created|date('l, F j, Y') }}</time> by <a href="#">{{ blog.author }}</a></p>
 
-                        {#{% for comment in comments %}#}
                         <div class="comment">
                             <p><small>Comments: {{ comments[loop.index0]|length }}</small></p>
-                            {#<p><small>Comments: {{ blog.comments|length }}</small></p>#}
                         </div>
-                        {#{% endfor %}#}
                             <p>{{ blog.blog|truncate(350, true) }}</p><br>
 
                         <div class="tags">
@@ -60,7 +37,28 @@
     {% endfor %}
 {% endblock %}
 
+{% block pagination %}
+    <ul class="pager">
+        {% if total_pages > 0 %}
+            <div class="pagination">
+                <ul>
+                    {% for i in 1..total_pages %}
+                        {% if loop.first %}
+                            <li class="{% if current_page == 1 %} {% endif %}"><a href="{{ path('general_sym_project_homepage', { 'page':current_page - 1 }) }}">Previous</a></li>
+                        {%endif%}
 
+                        {% if loop.last %}
+                            <li class="{% if current_page == total_pages %} {% endif %}"><a href="{{ path('general_sym_project_homepage', { 'page':current_page + 1 }) }}">Next</a></li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+
+        {#<li><a href="#">Previous</a></li>#}
+        {#<li><a href="#">Next</a></li>#}
+    </ul>
+{% endblock %}
 
 {% block sidebar %}
     {{ parent() }}

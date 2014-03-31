@@ -151,8 +151,29 @@ class PageController extends Controller
         return $total;
     }
 
-    public function searchAction()
+    public function searchAction(Request $request)
     {
-        return $this->render('GeneralSymProjectBundle:Default:search.html.twig');
+        // Search code
+        $results = null;
+        $query = $request->query->get('q');
+
+        if (!empty($query)) {
+            $em = $this->getDoctrine()->getManager();
+
+            $results = $em->createQueryBuilder()
+                ->from('GeneralSymProjectBundle:Blog', 'b')
+                ->select('b')
+                ->where('b.title LIKE :search')
+                ->setParameter(':search', "%${query}%")
+                ->getQuery()
+                ->getResult();
+        }
+
+//        exit(\Doctrine\Common\Util\Debug::dump($results));
+        return $this->render('GeneralSymProjectBundle:Default:search.html.twig', array(
+            'query'        => $query,
+            'results'      => $results,
+
+        ));
     }
 }

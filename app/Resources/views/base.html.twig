@@ -7,43 +7,17 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>{% block title %}The SymProject{% endblock %}</title>
-    {% block stylesheets %}
-        <link href="{{ asset('bundles/generalsymproject/css/bootstrap.min.css') }}" rel="stylesheet">
-        <link href="{{ asset('bundles/generalsymproject/css/blog.css') }}" rel="stylesheet">
 
-        <link href='http://fonts.googleapis.com/css?family=Kameron' rel='stylesheet' type='text/css'>
-    {% endblock %}
+{% block stylesheets %}
+    <link href="{{ asset('bundles/generalsymproject/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('bundles/generalsymproject/css/blog.css') }}" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Kameron' rel='stylesheet' type='text/css'>
+{% endblock %}
     <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
 </head>
 <body>
 
-<div class="blog-masthead">
-    <div class="container">
-        <nav class="blog-nav">
-            <a class="blog-nav-item" href="{{ path('general_sym_project_homepage') }}">Home</a>
-            <a class="blog-nav-item" href="#">New features</a>
-            <a class="blog-nav-item" href="http://www.stackoverflow.com">Stack Overflow</a>
-            <a class="blog-nav-item" href="http://www.symfony.com">Resources</a>
-            <a class="blog-nav-item" href="{{ path('general_sym_project_about') }}">About</a>
-            {#<ul class="nav navbar-nav">#}
-                {#<li><a class="blog-nav-item" href="{{ path('general_sym_project_homepage') }}">Home</a></li>#}
-                {#<li><a class="blog-nav-item" href="#">New features</a></li>#}
-                {#<li><a class="blog-nav-item" href="http://www.stackoverflow.com">Stack Overflow</a></li>#}
-                {#<li><a class="blog-nav-item" href="http://www.symfony.com">Resources</a></li>#}
-                {#<li><a class="blog-nav-item" href="{{ path('general_sym_project_about') }}">About</a></li>#}
-            {#</ul>#}
-
-            {#<form class="navbar-form navbar-right">#}
-                {#<input type="text" class="form-control" placeholder="Search...">#}
-            {#</form>#}
-
-            {#<form action="" method="GET">#}
-                {#<input type="search" name="q" value={{ query }}>#}
-                {#<input type="submit" value="Search">#}
-            {#</form>#}
-        </nav>
-    </div>
-</div>
+{% block nav %}{% endblock %}
 
 
     <div class="container">
@@ -114,66 +88,21 @@
                     <p>Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
                     <p>Donec ullamcorper nulla non metus auctor fringilla. Nulla vitae elit libero, a pharetra augue.</p>
                 </div><!-- /.blog-post -->
-
-
                 {% endblock %}
-                {% block pagination %}
-                <ul class="pager">
-                    {% if total_pages > 0 %}
-                        <div class="pagination">
-                            <ul>
-                                {% for i in 1..total_pages %}
-                                    {% if loop.first %}
-                                        <li class="{% if current_page == 1 %} {% endif %}"><a href="{{ path('general_sym_project_homepage', { 'page':current_page - 1 }) }}">Previous</a></li>
-                                    {%endif%}
 
-                                    {% if loop.last %}
-                                        <li class="{% if current_page == total_pages %} {% endif %}"><a href="{{ path('general_sym_project_homepage', { 'page':current_page + 1 }) }}">Next</a></li>
-                                    {% endif %}
-                                {% endfor %}
-                            </ul>
-                        </div>
-                    {% endif %}
-
-                    {#<li><a href="#">Previous</a></li>#}
-                    {#<li><a href="#">Next</a></li>#}
-                </ul>
-                {% endblock %}
+                {% block pagination %}{% endblock %}
             </div><!-- /.blog-main -->
 
-
-            <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
-                <div class="sidebar-module sidebar-module-inset">
-                    <h4>About</h4>
-                    <p>Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
-                </div>
+                {% block sidebar %}
+                <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+                    <div class="sidebar-module sidebar-module-inset">
+                        <h4>About</h4>
+                        <p>Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
+                    </div>
 
                 <br>
-                {% block search %}
-                {#<form action="" method="GET">#}
-                    {#<input type="search" name="q" value={{ query }}>#}
-                    {#<input type="submit" value="Search">#}
-                {#</form>#}
-                {#<br>#}
 
-                {#{% if results %}#}
-                    {#<hr>#}
-                    {#<div class="well">#}
-                        {#<ul>#}
-                            {#{% for result in results %}#}
-                                {#<li><strong>Title: </strong> {{ blogs.title }}</li>#}
-                                {#<li><strong>Author: </strong> {{ blogs.author }}</li>#}
-                                {#<li><strong>Blog: </strong> {{ blogs.blog }}</li>#}
-                            {#{% endfor %}#}
-                        {#</ul>#}
-                    {#</div>#}
-                    {#<hr>#}
-                {#{% endif %}#}
-                {% endblock %}
-
-                <div class="sidebar-module">
-                    {% block sidebar %}
-                        <h4>Archives</h4>
+                    <h4>Archives</h4>
                         <ol class="list-unstyled">
                             <li><a href="#">May 2014</a></li>
                             <li><a href="#">April 2014</a></li>
@@ -185,24 +114,24 @@
                             <li><a href="#">October 2013</a></li>
                             <li><a href="#">September 2013</a></li>
                             <li><a href="#">August 2013</a></li>
-                            <li><a href="#">July 2013</a></li>
+                            <li><a href="{{ path('general_sym_project_archive', { 'year': '2013', 'month': 'July'}) }}">July 2013</a></li>
                             <li><a href="#">June 2013</a></li>
                         </ol>
-                </div>
-                <div class="sidebar-module">
-                    <h4>Elsewhere</h4>
-                    <ol class="list-unstyled">
-                        <li><a href="http://www.github.com">GitHub</a></li>
-                        <li><a href="http://www.twitter.com">Twitter</a></li>
-                        <li><a href="http://www.facebook.com">Facebook</a></li>
-                    </ol>
-                </div>
-                <div class="sidebar-module">
-                    <h4>Tags</h4>
-                    <span class="highlight">
-                        {% render controller('GeneralSymProjectBundle:Page:sidebar') %}
-                    </span>
-                    {% endblock %}
+
+                        <div class="sidebar-module">
+                            <h4>Elsewhere</h4>
+                            <ol class="list-unstyled">
+                                <li><a href="http://www.github.com">GitHub</a></li>
+                                <li><a href="http://www.twitter.com">Twitter</a></li>
+                                <li><a href="http://www.facebook.com">Facebook</a></li>
+                            </ol>
+                        </div>
+                        <div class="sidebar-module">
+                            <h4>Tags</h4>
+                            <span class="highlight">
+                                {% render controller('GeneralSymProjectBundle:Page:sidebar') %}
+                            </span>
+                {% endblock %}
                 </div>
             </div><!-- /.blog-sidebar -->
 
@@ -210,12 +139,14 @@
 
     </div><!-- /.container -->
 
-<div class="blog-footer">
-    <p>Copyright 2014</p>
-    <p>
-        <a href="#">Back to top</a>
-    </p>
-</div>
+{% block footer %}
+    <div class="blog-footer">
+        <p>Copyright 2014</p>
+        <p>
+            <a href="#">Back to top</a>
+        </p>
+    </div>
+{% endblock %}
 
 {% block javascripts %}{% endblock %}
 </body>

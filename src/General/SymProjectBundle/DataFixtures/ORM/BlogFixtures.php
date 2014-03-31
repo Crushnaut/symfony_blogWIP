@@ -45,41 +45,41 @@ class BlogFixtures extends AbstractFixture implements OrderedFixtureInterface
         $em->flush();
 
         $blog3 = new Blog();
-        $blog3->setTitle('Lorem Ipsum');
-        $blog3->setBlog('Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Typi non habent claritatem insitam; est usus legentis in iis qui facit eorum claritatem. Investigationes demonstraverunt lectores legere me lius quod ii legunt saepius. Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima. Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes in futurum.');
+        $blog3->setTitle('No baggage, travel light');
+        $blog3->setBlog('How much does your life weigh? Imagine for a second that you\'re carrying a backpack. I want you to pack it with all the stuff that you have in your life... you start with the little things. The shelves, the drawers, the knickknacks, then you start adding larger stuff. Clothes, tabletop appliances, lamps, your TV... the backpack should be getting pretty heavy now. You go bigger. Your couch, your car, your home... I want you to stuff it all into that backpack. Now I want you to fill it with people. Start with casual acquaintances, friends of friends, folks around the office... and then you move into the people you trust with your most intimate secrets. Your brothers, your sisters, your children, your parents and finally your husband, your wife, your boyfriend, your girlfriend. You get them into that backpack, feel the weight of that bag. Make no mistake your relationships are the heaviest components in your life. All those negotiations and arguments and secrets, the compromises. The slower we move the faster we die. Make no mistake, moving is living. Some animals were meant to carry each other to live symbiotically over a lifetime. Star crossed lovers, monogamous swans. We are not swans. We are sharks.');
         $blog3->setImage('practice.jpg');
         $blog3->setAuthor('KK');
-        $blog3->setTags('symfony, php, blog, practice, web-development, backend, bootstrap, web');
+        $blog3->setTags('symfony, php, blog, practice, web-development, backend, bootstrap, web, baggage, travel');
         $blog3->setCreated(new \DateTime('2013-11-04 09:22:21'));
         $blog3->setUpdated($blog->getCreated());
         $em->persist($blog3);
 
         $blog4 = new Blog();
-        $blog4->setTitle('Lorem Ipsum');
-        $blog4->setBlog('Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Typi non habent claritatem insitam; est usus legentis in iis qui facit eorum claritatem. Investigationes demonstraverunt lectores legere me lius quod ii legunt saepius. Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima. Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes in futurum.');
+        $blog4->setTitle('Hope');
+        $blog4->setBlog('We are here to make limbo tolerable, to ferry wounded souls across the river of dread until the point where hope is dimly visible. Then stop the boat, shove them in the water and make them swim.');
         $blog4->setImage('practice.jpg');
         $blog4->setAuthor('KK');
-        $blog4->setTags('symfony, php, blog, practice, web-development, backend, bootstrap, web');
+        $blog4->setTags('symfony, php, blog, practice, web-development, backend, bootstrap, web, hope');
         $blog4->setCreated(new \DateTime('2013-09-11 11:25:13'));
         $blog4->setUpdated($blog->getCreated());
         $em->persist($blog4);
 
         $blog5 = new Blog();
-        $blog5->setTitle('Lorem Ipsum');
-        $blog5->setBlog('Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Typi non habent claritatem insitam; est usus legentis in iis qui facit eorum claritatem. Investigationes demonstraverunt lectores legere me lius quod ii legunt saepius. Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima. Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes in futurum.');
+        $blog5->setTitle('Opportunity awaits');
+        $blog5->setBlog('Anybody who ever built an empire, or changed the world, sat where you are now. And it\'s *because* they sat there that they were able to do it.');
         $blog5->setImage('practice.jpg');
         $blog5->setAuthor('KK');
-        $blog5->setTags('symfony, php, blog, practice, web-development, backend, bootstrap, web');
+        $blog5->setTags('symfony, php, blog, practice, web-development, web, empire');
         $blog5->setCreated(new \DateTime('2013-06-06 10:34:12'));
         $blog5->setUpdated($blog->getCreated());
         $em->persist($blog5);
 
         $blog6 = new Blog();
-        $blog6->setTitle('Lorem Ipsum');
-        $blog6->setBlog('Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Typi non habent claritatem insitam; est usus legentis in iis qui facit eorum claritatem. Investigationes demonstraverunt lectores legere me lius quod ii legunt saepius. Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima. Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes in futurum.');
+        $blog6->setTitle('Perpetual motion');
+        $blog6->setBlog('Tonight most people will be welcomed home by jumping dogs and squealing kids. Their spouses will ask about their day, and tonight they\'ll sleep. The stars will wheel forth from their daytime hiding places; and one of those lights, slightly brighter than the rest, will be my wingtip passing over.');
         $blog6->setImage('practice.jpg');
         $blog6->setAuthor('KK');
-        $blog6->setTags('symfony, php, blog, practice, web-development, backend, bootstrap, web');
+        $blog6->setTags('symfony, php, blog, practice, web-development, bootstrap, movement, flying, light');
         $blog6->setCreated(new \DateTime('2013-10-30 04:45:22'));
         $blog6->setUpdated($blog->getCreated());
         $em->persist($blog6);
@@ -89,7 +89,7 @@ class BlogFixtures extends AbstractFixture implements OrderedFixtureInterface
         $blog7->setBlog('Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Typi non habent claritatem insitam; est usus legentis in iis qui facit eorum claritatem. Investigationes demonstraverunt lectores legere me lius quod ii legunt saepius. Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima. Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes in futurum.');
         $blog7->setImage('practice.jpg');
         $blog7->setAuthor('KK');
-        $blog7->setTags('symfony, php, blog, practice, web-development, backend, bootstrap, web');
+        $blog7->setTags('symfony, php, blog, practice, perfect, dummy text, filler, web, rocks');
         $blog7->setCreated(new \DateTime('2013-07-16 16:14:01'));
         $blog7->setUpdated($blog->getCreated());
         $em->persist($blog7);
