@@ -116,7 +116,7 @@ class BlogController extends Controller
         return $total;
     }
 
-    public function archiveAction($year, $month)
+    public function archiveAction()
     {
         $em = $this->getDoctrine()->getManager();
 

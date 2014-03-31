@@ -1,10 +1,18 @@
 {# src/General/SymProjectBundle/Resources/views/Default/index.html.twig #}
-{% extends 'GeneralSymProjectBundle::layout.html.twig' %}
+{#{% extends 'GeneralSymProjectBundle::layout.html.twig' %}#}
 
-{% block sidebar %}
-
-
-{% endblock %}
-
-{% block body %}{% endblock %}
-
+<ul>
+{% for strYear,years in blogPosts %}
+    <li>{{ strYear }}
+    <ul>
+    {% for strMonth,month in years %}
+        <li>{{ strMonth }} (Num posts: {{ month|length }})
+        <ul>
+        {% for post in month %}
+             <li><a href="{{ path('general_sym_project_show', {'id': post.getId, 'slug': post.getSlug}) }}">{{ post.getTitle }}</a></li>
+        {% endfor %}
+        </ul>
+    {% endfor %}
+    </ul>
+{% endfor %}
+</ul>
