@@ -96,6 +96,28 @@ class PageController extends Controller
         ));
     }
 
+    public function showByMonthAction(Request $request, $filter = null, $month, $year)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $allblogs = $em->getRepository('GeneralSymProjectBundle:Blog')->findAll();
+
+        $blogs = array();
+
+        foreach ($allblogs as $post) {
+            $postyear = $post->getCreated()->format('Y');
+            $postmonth = $post->getCreated()->format('F');
+            if ($postyear === $year && $postmonth === $month)
+            {
+                $blogs[] = $post;
+            }
+        }
+
+        return $this->render('GeneralSymProjectBundle:Default:monthly.html.twig', array(
+            'blogs'        => $blogs,
+        ));
+    }
+
     public function aboutAction(Request $request)
     {
         // Search code

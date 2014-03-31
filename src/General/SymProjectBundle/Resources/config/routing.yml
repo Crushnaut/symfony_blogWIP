@@ -22,9 +22,9 @@ general_sym_project_comment_create:
         _methods:  POST
         blog_id:  \d+
 
-general_sym_project_archive:
+general_sym_project_monthly:
      path:  /archive/{year}/{month}
-     defaults: { _controller: GeneralSymProjectBundle:Blog:archive }
+     defaults: { _controller: GeneralSymProjectBundle:Page:showByMonth }
 
 general_sym_project_search:
     path: /search
